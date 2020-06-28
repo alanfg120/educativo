@@ -1,5 +1,9 @@
+import 'package:educativo/src/componentes/campoyciudad/bloc/campoyciudad_bloc.dart';
+import 'package:educativo/src/componentes/cantando/bloc/cantando_bloc.dart';
+import 'package:educativo/src/componentes/comesonidos/bloc/comesonidos_bloc.dart';
 import 'package:educativo/src/componentes/home/bloc/home_bloc.dart';
 import 'package:educativo/src/componentes/home/vistas/home_page.dart';
+import 'package:educativo/src/componentes/zoologico/bloc/zoologico_bloc.dart';
 import 'package:educativo/src/plugins/bloc_delgate.dart';
 import 'package:educativo/src/plugins/rutas.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +51,18 @@ class MyApp extends StatelessWidget {
                     
                       BlocProvider<HomeBloc>(
                       create: (context) => HomeBloc(),
+                      ),
+                      BlocProvider<ComesonidosBloc>(
+                      create: (context) => ComesonidosBloc(),
+                      ),
+                      BlocProvider<ZoologicoBloc>(
+                      create: (context) => ZoologicoBloc(),
+                      ),
+                      BlocProvider<CampoyCiudadBloc>(
+                      create: (context) => CampoyCiudadBloc(),
+                      ),
+                      BlocProvider<CantandoBloc>(
+                      create: (context) => CantandoBloc(),
                       ),
                     
                      
