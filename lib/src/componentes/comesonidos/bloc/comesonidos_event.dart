@@ -12,3 +12,5 @@ class AcceptLetraEvent extends ComeSonidosEvent{
     @override
   List<Object> get props => [index,ejercicio];
 }
+
+class CompleteEjercicioEvent extends ComeSonidosEvent{} 

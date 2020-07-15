@@ -20,7 +20,7 @@ import 'package:path_provider/path_provider.dart';
 void main() async {
 
  WidgetsFlutterBinding.ensureInitialized();
- BlocSupervisor.delegate = SimpleBlocDelegate();
+ Bloc.observer = SimpleBlocObserve();
  final  directorio = await getApplicationDocumentsDirectory();
  Hive.init(directorio.path);
 /*  Box<Usuario> usuarioBox = await Hive.openBox<Usuario>('usuario');
@@ -56,6 +56,7 @@ class MyApp extends StatelessWidget {
                       create: (context) => ComesonidosBloc(),
                       ),
                       BlocProvider<ZoologicoBloc>(
+                      lazy: false,
                       create: (context) => ZoologicoBloc(),
                       ),
                       BlocProvider<CampoyCiudadBloc>(

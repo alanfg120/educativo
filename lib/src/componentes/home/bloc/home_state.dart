@@ -1,7 +1,20 @@
 part of 'home_bloc.dart';
 
-@immutable
-abstract class HomeState {}
+class HomeState extends Equatable {
 
-class HomeInitial extends HomeState {}
- 
+  final List<bool> bloqueoJuego;
+  HomeState({this.bloqueoJuego});
+
+  factory HomeState.initial()=>
+          HomeState(bloqueoJuego: [false,false,true,true,true]);
+  
+  HomeState copyWith({List<bool> bloqueoJuego})=>
+            HomeState(
+            bloqueoJuego: bloqueoJuego ?? this.bloqueoJuego
+            );
+
+
+  @override
+  List<Object> get props => [bloqueoJuego];
+
+}

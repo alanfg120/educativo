@@ -63,7 +63,7 @@ Map<String,List<EjercicioComesonidoClass>>  ejerciciosMap = {
                 EjercicioComesonidoClass(letra: 'paloma',accept: false),
                 EjercicioComesonidoClass(letra: 'limpia',accept: false),
                 EjercicioComesonidoClass(letra: 'sus',accept: false),
-                EjercicioComesonidoClass(letra: 'alas',accept: false),
+                EjercicioComesonidoClass(letra: 'alas.',accept: false),
                ],
  
  };

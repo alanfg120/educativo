@@ -7,8 +7,7 @@ part 'cantando_event.dart';
 part 'cantando_state.dart';
 
 class CantandoBloc extends Bloc<CantandoEvent, CantandoState> {
-  @override
-  CantandoState get initialState => CantandoInitial();
+  CantandoBloc() : super(CantandoInitial());
 
   @override
   Stream<CantandoState> mapEventToState(

@@ -7,8 +7,10 @@ part 'campoyciudad_event.dart';
 part 'campoyciudad_state.dart';
 
 class CampoyCiudadBloc extends Bloc<CampoyCiudadEvent, CampoyCiudadState> {
-  @override
-  CampoyCiudadState get initialState => CampoyciudadInitial();
+
+
+  CampoyCiudadBloc() : super(CampoyciudadInitial());
+
 
   @override
   Stream<CampoyCiudadState> mapEventToState(

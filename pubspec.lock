@@ -7,14 +7,14 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.0"
+    version: "5.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.39.10"
+    version: "0.39.11"
   archive:
     dependency: transitive
     description:
@@ -36,13 +36,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.4.1"
+  audioplayers:
+    dependency: "direct main"
+    description:
+      name: audioplayers
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.15.1"
   bloc:
     dependency: "direct main"
     description:
       name: bloc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.0"
+    version: "5.0.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -162,6 +169,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.16.1"
+  cubit:
+    dependency: transitive
+    description:
+      name: cubit
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -203,7 +217,7 @@ packages:
       name: file
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.2.0"
+    version: "5.2.1"
   fixnum:
     dependency: transitive
     description:
@@ -222,9 +236,28 @@ packages:
       name: flutter_bloc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.1"
+    version: "5.0.0"
+  flutter_cubit:
+    dependency: transitive
+    description:
+      name: flutter_cubit
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
+  flutter_inappwebview:
+    dependency: transitive
+    description:
+      name: flutter_inappwebview
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.4.0+2"
   flutter_test:
     dependency: "direct dev"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  flutter_web_plugins:
+    dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -395,14 +428,14 @@ packages:
       name: path_provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.6.10"
+    version: "1.6.11"
   path_provider_linux:
     dependency: transitive
     description:
       name: path_provider_linux
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.1+1"
+    version: "0.0.1+2"
   path_provider_macos:
     dependency: transitive
     description:
@@ -493,7 +526,7 @@ packages:
       name: shelf
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.7.5"
+    version: "0.7.7"
   shelf_web_socket:
     dependency: transitive
     description:
@@ -583,6 +616,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.6"
+  uuid:
+    dependency: transitive
+    description:
+      name: uuid
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.0"
   vector_math:
     dependency: transitive
     description:
@@ -625,6 +665,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.1"
+  youtube_player_flutter:
+    dependency: "direct main"
+    description:
+      name: youtube_player_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "7.0.0+6"
 sdks:
   dart: ">=2.7.0 <3.0.0"
   flutter: ">=1.16.0 <2.0.0"

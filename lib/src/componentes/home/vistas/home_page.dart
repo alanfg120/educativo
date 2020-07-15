@@ -1,6 +1,7 @@
 import 'package:educativo/src/componentes/campoyciudad/bloc/campoyciudad_bloc.dart';
 import 'package:educativo/src/componentes/cantando/bloc/cantando_bloc.dart';
 import 'package:educativo/src/componentes/comesonidos/bloc/comesonidos_bloc.dart';
+import 'package:educativo/src/componentes/home/bloc/home_bloc.dart';
 import 'package:educativo/src/componentes/zoologico/bloc/zoologico_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,16 +51,20 @@ class _HomePageState extends State<HomePage> {
           ),
           Flexible(
           flex  : 1,
-          child : ListView.builder(
-                  itemCount   : menu.length, 
-                  itemBuilder : (context, i) {
-                    return ListTile(
-                           leading  : _imageMenu(),
-                           title    : Text(menu[i]),
-                           subtitle : _progress(i),
-                           onTap    : ()=>_selectPage(i)
-                    );
-                  }
+          child : BlocBuilder<HomeBloc,HomeState>(
+                  builder: (context,state)=>
+                        ListView.builder(
+                    itemCount   : menu.length, 
+                    itemBuilder : (context, i) {
+                      return ListTile(
+                             leading  : _imageMenu(),
+                             title    : Text(menu[i]),
+                             subtitle : _progress(i),
+                             isThreeLine: true,
+                             onTap    : () => state.bloqueoJuego[i] ? null : _selectPage(i) 
+                      );
+                    }
+            ),
           ),
           )
         ],
@@ -91,32 +96,54 @@ class _HomePageState extends State<HomePage> {
    }
 
   }
+// ignore: missing_return
 Widget  _progress(int i) {
    switch (i) {
-          case 0 : return BlocBuilder<ComesonidosBloc,ComeSonidosState>(
+          case 0 : return BlocConsumer<ComesonidosBloc,ComeSonidosState>(
+                          listener: (context,state){
+                              if((state.progreso * 10).toInt() == 9)
+                                 context.bloc<HomeBloc>().add(
+                                  DesbloquearJuegoEvent(index: (i+1))
+                                 );
+                          },
                           builder: (context,state)=>
-                                    LinearProgressIndicator(value:state.progreso)
+                                    _progreso(state.progreso,state.numeroEjercicios)
+                                   
                           );
                    break;  
           case 1 : return BlocBuilder<ZoologicoBloc,ZoologicoState>(
                           builder: (context,state)=>
-                                    LinearProgressIndicator()
+                                    LinearProgressIndicator(value : 0)
                           );     
                    break;  
           case 2 : return BlocBuilder<CampoyCiudadBloc,CampoyCiudadState>(
                           builder: (context,state)=>
-                                    LinearProgressIndicator()
+                                    LinearProgressIndicator(value : 0)
                           );        
                    break;  
           case 3 : return BlocBuilder<CantandoBloc,CantandoState>(
                           builder: (context,state)=>
-                                    LinearProgressIndicator()
+                                    LinearProgressIndicator(value : 0)
                           );       
                    break;  
-          case 4 : return LinearProgressIndicator();       
+          case 4 : return LinearProgressIndicator(value : 0);       
                    break;  
           default: break;
    }
 
+  }
+    Widget _progreso(double progreso, int ejercicios){
+     return  Padding(
+             padding: const EdgeInsets.symmetric(vertical: 8),
+             child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                 LinearProgressIndicator(value:progreso),
+                 Text('${(progreso * 10).toInt()} / $ejercicios')
+              ],  
+             ),
+           );
   }
 }

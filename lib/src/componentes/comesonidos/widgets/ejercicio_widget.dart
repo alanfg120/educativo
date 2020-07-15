@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:dotted_border/dotted_border.dart';
 import 'package:educativo/src/componentes/comesonidos/bloc/comesonidos_bloc.dart';
 import 'package:educativo/src/componentes/comesonidos/models/ejercicio_model.dart';
@@ -29,31 +27,31 @@ class _EjercicioComeSonidoState extends State<EjercicioComeSonido> {
             child     : Column(
                         children: <Widget>[
                                   Container(
-                                  height : 300,
+                                  height : 240,
                                   child  : Image.asset(widget.image,fit: BoxFit.cover),
                                   margin : EdgeInsets.only(bottom: 20),
                                   ),
                                   Container(
                                   width  : double.infinity,
-                                  height : 120,
+                                  height : 180,
                                   child  : Wrap(
-                                           crossAxisAlignment: WrapCrossAlignment.center,
-                                           alignment: WrapAlignment.spaceAround,
-                                           runSpacing: widget.data.length >4 ? 10 : 0,
-                                           children: widget.data.asMap()
-                                                           .entries.map((e) => _dragTager(e.value,e.key)).toList()
+                                           runAlignment : WrapAlignment.center ,
+                                           alignment    : WrapAlignment.spaceAround,
+                                           runSpacing   : widget.data.length >4 ? 10 : 0,
+                                           children     : widget.data.asMap()
+                                                                .entries.map((e) => _dragTager(e.value,e.key)).toList()
                                   ),
                                  ),
                                  Container(
                                  width  : double.infinity,
-                                 height : 110,
+                                 height : 180,  
                                  child  : Wrap(
-                                          //crossAxisAlignment: WrapCrossAlignment.center,
-                                          alignment: WrapAlignment.spaceAround,
-                                          runSpacing: widget.data.length >3 ? 10 : 0,
-                                          children: widget.data.asMap()
-                                                          .entries.map((e) => _drop(e.value,e.key)).toList()
-                                                          ..shuffle()
+                                          runAlignment : WrapAlignment.center ,
+                                          alignment    : WrapAlignment.spaceAround,
+                                          runSpacing   : widget.data.length >3 ? 10 : 0,
+                                          children     : widget.data.asMap()
+                                                               .entries.map((e) => _drop(e.value,e.key)).toList()
+                                                              ..shuffle()
                                  ),
                                )
                               ],
