@@ -46,18 +46,35 @@ class SelectRadioEvent extends ZoologicoEvent {
 class VoltearTarjetaEvent extends ZoologicoEvent {
   final String tipo;
   final int index;
-  VoltearTarjetaEvent({this.index,this.tipo});
+  VoltearTarjetaEvent({this.index, this.tipo});
   @override
-  List<Object> get props => [index,tipo];
+  List<Object> get props => [index, tipo];
 }
 
 class VerificarTurnoEvent extends ZoologicoEvent {
   final String tipo;
   final int index;
   final String nombreTarjeta;
-  VerificarTurnoEvent({this.index,this.nombreTarjeta,this.tipo});
+  VerificarTurnoEvent({this.index, this.nombreTarjeta, this.tipo});
   @override
-  List<Object> get props => [index,nombreTarjeta,tipo];
+  List<Object> get props => [index, nombreTarjeta, tipo];
 }
 
-class TranformTarjetaTextoEvent extends ZoologicoEvent{} 
+class ChangePageEvent extends ZoologicoEvent {
+  final String action;
+  final int page;
+  ChangePageEvent({this.page, this.action});
+  @override
+  List<Object> get props => [page, action];
+}
+
+class TranformTarjetaTextoEvent extends ZoologicoEvent {}
+
+class CompleteEjercicioEvent extends ZoologicoEvent {}
+
+class VerificarEjercicioEvent extends ZoologicoEvent {
+  final int page;
+  VerificarEjercicioEvent({this.page});
+  @override
+  List<Object> get props => [page];
+}

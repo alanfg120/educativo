@@ -7,10 +7,13 @@ class ZoologicoState extends Equatable {
   final List<Animal> randomAnimales;
   final List<Animal> tarjetaAnimales;
   final List<Animal> tarjetaTextoAnimales;
-   final int respuesta;
+  final int respuesta;
   final String respuestaCorrecta;
   final int valueRadio;
   final bool volteado;
+  final double progreso;
+  final int numeroEjercicios;
+  final int currentpage;
 
   ZoologicoState(
       {this.animales,
@@ -21,7 +24,10 @@ class ZoologicoState extends Equatable {
       this.valueRadio,
       this.tarjetaAnimales,
       this.tarjetaTextoAnimales,
-      this.volteado});
+      this.volteado,
+      this.progreso,
+      this.numeroEjercicios,
+      this.currentpage});
 
   factory ZoologicoState.initial() => ZoologicoState(
       animales          : animalesList,
@@ -38,7 +44,10 @@ class ZoologicoState extends Equatable {
                          ],
       respuesta         : 0,
       respuestaCorrecta : 'indefinido',
-      valueRadio        : -1);
+      valueRadio        : -1,
+      progreso          :  0,
+      numeroEjercicios  :  5,
+      currentpage       :  0);
 
   ZoologicoState copyWith(
           {List<Animal> animales,
@@ -49,7 +58,10 @@ class ZoologicoState extends Equatable {
           List<Animal> tarjetaTextoAnimales,
           int respuesta,
           String respuestaCorrecta,
-          int valueRadio}) =>
+          int valueRadio,
+          double progreso,
+          int numeroEjercicios,
+          int currentpage}) =>
       ZoologicoState( 
           animales             : animales          ?? this.animales,
           select               : select            ?? this.select,
@@ -59,7 +71,10 @@ class ZoologicoState extends Equatable {
           tarjetaTextoAnimales : tarjetaTextoAnimales   ?? this.tarjetaTextoAnimales,
           respuesta            : respuesta         ?? this.respuesta,
           respuestaCorrecta    : respuestaCorrecta ?? this.respuestaCorrecta,
-          valueRadio           : valueRadio        ?? this.valueRadio);
+          valueRadio           : valueRadio        ?? this.valueRadio,
+          progreso             : progreso          ?? this.progreso,
+          numeroEjercicios     : numeroEjercicios  ?? this.numeroEjercicios,
+          currentpage          : currentpage       ?? this.currentpage);
 
   @override
   List<Object> get props => [
@@ -71,6 +86,13 @@ class ZoologicoState extends Equatable {
   valueRadio,
   tarjetaAnimales,
   tarjetaTextoAnimales,
-  volteado
+  volteado,
+  progreso,
+  numeroEjercicios,
+  currentpage
   ];
+  @override
+  @override
+  String toString() => '$respuesta';
+ 
 }

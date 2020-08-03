@@ -1,5 +1,4 @@
-import 'package:educativo/src/componentes/campoyciudad/bloc/campoyciudad_bloc.dart';
-import 'package:educativo/src/componentes/cantando/bloc/cantando_bloc.dart';
+
 import 'package:educativo/src/componentes/comesonidos/bloc/comesonidos_bloc.dart';
 import 'package:educativo/src/componentes/home/bloc/home_bloc.dart';
 import 'package:educativo/src/componentes/home/vistas/home_page.dart';
@@ -58,21 +57,14 @@ class MyApp extends StatelessWidget {
                       BlocProvider<ZoologicoBloc>(
                       lazy: false,
                       create: (context) => ZoologicoBloc(),
-                      ),
-                      BlocProvider<CampoyCiudadBloc>(
-                      create: (context) => CampoyCiudadBloc(),
-                      ),
-                      BlocProvider<CantandoBloc>(
-                      create: (context) => CantandoBloc(),
-                      ),
-                    
+                      )
                      
 
                      ],
           child: MaterialApp(
         
           debugShowCheckedModeBanner: false,
-          title: 'Hospital Citas',
+          title: 'Jugando',
           theme: ThemeData(
                  primaryColor  : Color(0xFF01C6BD),
                  appBarTheme   : AppBarTheme(

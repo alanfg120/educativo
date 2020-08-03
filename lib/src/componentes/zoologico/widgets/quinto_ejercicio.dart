@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class QuintoEjercicioZoologico extends StatefulWidget {
-  QuintoEjercicioZoologico({Key key}) : super(key: key);
+  final ZoologicoState state;
+  QuintoEjercicioZoologico({Key key,this.state}) : super(key: key);
 
   @override
   _QuintoEjercicioZoologicoState createState() => _QuintoEjercicioZoologicoState();
@@ -14,14 +15,9 @@ class _QuintoEjercicioZoologicoState extends State<QuintoEjercicioZoologico> {
   
   @override
   Widget build(BuildContext context) {
-     context.bloc<ZoologicoBloc>().add(
-        TranformTarjetaTextoEvent()
-      );
-    return BlocBuilder<ZoologicoBloc,ZoologicoState>(
-           builder:(context,state)
-                  => GridView.builder(
+    return   GridView.builder(
                      padding      : EdgeInsets.only(bottom: 80,top: 50),
-                     itemCount    :state.tarjetaAnimales.length,
+                     itemCount    : widget.state.tarjetaAnimales.length,
                      gridDelegate : SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
                      itemBuilder  : (context, i) => Container(
                                                     decoration: BoxDecoration(
@@ -29,17 +25,17 @@ class _QuintoEjercicioZoologicoState extends State<QuintoEjercicioZoologico> {
                                                     ),
                                                     child: GestureDetector(
                                                            onTap: (){
-                                                             if(!state.tarjetaTextoAnimales[i].volteado)
+                                                             if(!widget.state.tarjetaTextoAnimales[i].volteado)
                                                              context.bloc<ZoologicoBloc>().add(
                                                                VoltearTarjetaEvent(index: i,tipo: 'texto')
                                                              );
                                                            },
-                                                           child: _tarjetasList(state.tarjetaTextoAnimales,i)
+                                                           child: _tarjetasList(widget.state.tarjetaTextoAnimales,i)
                                                     ),
                      ),
              
-      ),
-    );
+      );
+    
   }
 
  Widget _tarjetasList(List<Animal> tarjetaAnimales, int i) {

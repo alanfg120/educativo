@@ -15,7 +15,7 @@ class _PrimerEjercicioZoologicoState extends State<PrimerEjercicioZoologico> {
 
    
    YoutubePlayerController _controller = YoutubePlayerController(
-                                         initialVideoId: 'dYs1y7ZhEb8',
+                                         initialVideoId: 'OTaOGoyE2Wg',
                                          flags: YoutubePlayerFlags(
                                                 autoPlay     : false,
                                                 mute         : false,
@@ -35,7 +35,7 @@ class _PrimerEjercicioZoologicoState extends State<PrimerEjercicioZoologico> {
                          children: <Widget>[
                                     Text("Seleciona el animal que mas te gusta",style: TextStyle(fontSize: 18)),
                                     GestureDetector(
-                                    onTap: ()=>widget.audio.play('audios/leon.mp3'),
+                                    onTap: ()=>widget.audio.play('audios/animalFavorito.mp3'),
                                     child: Image.asset(
                                            'assets/sonido.png',
                                             width  : 50,

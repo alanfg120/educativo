@@ -9,11 +9,8 @@ class ComeSonidosPage extends StatefulWidget {
 }
 
 class _ComeSonidosPageState extends State<ComeSonidosPage> {
-  bool isSuccessful= true;
-  PageController _controller = PageController(
-    initialPage: 0,
-    keepPage: true
-  );
+  
+  PageController _controller = PageController(keepPage: false);
 
   @override
   void dispose() {
@@ -23,69 +20,90 @@ class _ComeSonidosPageState extends State<ComeSonidosPage> {
 
   @override
   Widget build(BuildContext context) {
+    int _currentIndex = context.bloc<ComesonidosBloc>().state.currentpage;
     return Scaffold(
-           appBar: AppBar(title: Text('Monstro Comesonido')),
-              body  : BlocBuilder<ComesonidosBloc,ComeSonidosState>(
-                builder:(context,state)
-                        =>PageView(
-                          controller: _controller,
-                          //physics: NeverScrollableScrollPhysics(),
-                          children: <Widget>[
-                                  EjercicioComeSonido(
-                                  image     : 'assets/mesa.jpg',
-                                  data      :  state.ejercicios['ejercicio1'],
-                                  ejercicio : 'ejercicio1',
-                                  ),                    
-                                  EjercicioComeSonido(
-                                  image     : 'assets/sapo.png',
-                                  data      :  state.ejercicios['ejercicio2'],
-                                  ejercicio : 'ejercicio2',
-                                  ),                    
-                                  EjercicioComeSonido(
-                                  image     : 'assets/momia.jpg',
-                                  data      :  state.ejercicios['ejercicio3'],
-                                  ejercicio : 'ejercicio3',
-                                  ),                    
-                                  EjercicioComeSonido(
-                                  image     : 'assets/mama.jpg',
-                                  data      :  state.ejercicios['ejercicio4'],
-                                  ejercicio : 'ejercicio4',
-                                  ),                    
-                                  EjercicioComeSonido(
-                                  image     : 'assets/paloma.jpg',
-                                  data      :  state.ejercicios['ejercicio5'],
-                                  ejercicio : 'ejercicio5',
-                                  ),                    
-                                  EjercicioComeSonido(
-                                  image     : 'assets/paloma.jpg',
-                                  data      :  state.ejercicios['ejercicio6'],
-                                  ejercicio : 'ejercicio6',
-                                  ),                    
-                                  EjercicioComeSonido(
-                                  image     : 'assets/paloma.jpg',
-                                  data      :  state.ejercicios['ejercicio7'],
-                                  ejercicio : 'ejercicio7',
-                                  ),                    
-                                  EjercicioComeSonido(
-                                  image     : 'assets/paloma.jpg',
-                                  data      :  state.ejercicios['ejercicio8'],
-                                  ejercicio : 'ejercicio8',
-                                  ),                    
-                                  EjercicioComeSonido(
-                                  image     : 'assets/paloma.jpg',
-                                  data      :  state.ejercicios['ejercicio9'],
-                                  ejercicio : 'ejercicio9',
-                                  ),                    
-                                  EjercicioComeSonido(
-                                  image     : 'assets/paloma.jpg',
-                                  data      :  state.ejercicios['ejercicio10'],
-                                  ejercicio : 'ejercicio10',
-                                  ),                    
-                         
+            body  : BlocConsumer<ComesonidosBloc,ComeSonidosState>(
+                listener: (context,state){
+                /*     if(state.progreso > 0 && state.progreso < 0.9999)
+                       _controller.nextPage(
+                                   duration : Duration(milliseconds: 800), 
+                                   curve    : Curves.linearToEaseOut
+                       ); */
+                    
+                },
 
-                        ],
+                builder:(context,state)
+                        =>SafeArea(
+                          child: Stack(
+                                  children:<Widget>[ 
+                                    Positioned(
+                                    child: IconButton(
+                                           icon: Icon(Icons.arrow_back_ios), 
+                                           onPressed: ()=>Navigator.pop(context)
+                                           )
+                                    ),
+                                    AnimatedSwitcher(
+                                    duration: Duration(milliseconds: 200),
+                                    child: IndexedStack(
+                                           key: ValueKey<int>(state.currentpage),
+                                           index: state.currentpage,
+                                           children: <Widget>[
+                                                  EjercicioComeSonido(
+                                                  image     : 'assets/mesa.jpg',
+                                                  data      :  state.ejercicios['ejercicio1'],
+                                                  ejercicio : 'ejercicio1',
+                                                  ),                    
+                                                  EjercicioComeSonido(
+                                                  image     : 'assets/sapo.png',
+                                                  data      :  state.ejercicios['ejercicio2'],
+                                                  ejercicio : 'ejercicio2',
+                                                  ),                    
+                                                  EjercicioComeSonido(
+                                                  image     : 'assets/momia.jpg',
+                                                  data      :  state.ejercicios['ejercicio3'],
+                                                  ejercicio : 'ejercicio3',
+                                                  ),                    
+                                                  EjercicioComeSonido(
+                                                  image     : 'assets/mama.jpg',
+                                                  data      :  state.ejercicios['ejercicio4'],
+                                                  ejercicio : 'ejercicio4',
+                                                  ),                    
+                                                  EjercicioComeSonido(
+                                                  image     : 'assets/paloma.jpg',
+                                                  data      :  state.ejercicios['ejercicio5'],
+                                                  ejercicio : 'ejercicio5',
+                                                  ),                    
+                                                  EjercicioComeSonido(
+                                                  image     : 'assets/paloma.jpg',
+                                                  data      :  state.ejercicios['ejercicio6'],
+                                                  ejercicio : 'ejercicio6',
+                                                  ),                    
+                                                  EjercicioComeSonido(
+                                                  image     : 'assets/paloma.jpg',
+                                                  data      :  state.ejercicios['ejercicio7'],
+                                                  ejercicio : 'ejercicio7',
+                                                  ),                    
+                                                  EjercicioComeSonido(
+                                                  image     : 'assets/paloma.jpg',
+                                                  data      :  state.ejercicios['ejercicio8'],
+                                                  ejercicio : 'ejercicio8',
+                                                  ),                    
+                                                  EjercicioComeSonido(
+                                                  image     : 'assets/paloma.jpg',
+                                                  data      :  state.ejercicios['ejercicio9'],
+                                                  ejercicio : 'ejercicio9',
+                                                  ),                    
+                                                  EjercicioComeSonido(
+                                                  image     : 'assets/paloma.jpg',
+                                                  data      :  state.ejercicios['ejercicio10'],
+                                                  ejercicio : 'ejercicio10',
+                                                  ),                    
+                                       ],
                 ),
+                                    ),
+                                                 ]               ),
               ),
+    )
     );
   }
 

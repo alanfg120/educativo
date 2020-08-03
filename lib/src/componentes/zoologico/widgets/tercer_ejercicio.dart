@@ -6,7 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TercerEjercicioZoologico extends StatefulWidget {
   final AudioCache audio;
-  TercerEjercicioZoologico({Key key,this.audio}) : super(key: key);
+  final ZoologicoState state;
+  TercerEjercicioZoologico({Key key,this.audio,this.state}) : super(key: key);
 
   @override
   _TercerEjercicioZoologicoState createState() => _TercerEjercicioZoologicoState();
@@ -15,19 +16,14 @@ class TercerEjercicioZoologico extends StatefulWidget {
 class _TercerEjercicioZoologicoState extends State<TercerEjercicioZoologico> {
   @override
   Widget build(BuildContext context) {
-      context.bloc<ZoologicoBloc>().add(
-        RandomListAnimalEvent(respuesta: 'Elefante')
-      );
-    return BlocBuilder<ZoologicoBloc,ZoologicoState>(
-            builder:(context,state)
-            =>Column(
+        return Column(
                children: <Widget>[
                          _adivinanza(),
-                         _opciones(state.randomAnimales,state.valueRadio),
-                         _solucion(state.respuestaCorrecta)
+                         _opciones(widget.state.randomAnimales,widget.state.valueRadio),
+                         _solucion(widget.state.respuestaCorrecta)
               ],
-      ),
-    );
+      );
+    
   }
 
  Widget _adivinanza() {
@@ -37,12 +33,12 @@ class _TercerEjercicioZoologicoState extends State<TercerEjercicioZoologico> {
        child: Row(
               children: <Widget>[
                          Flexible(
-                         child: Text("Cual es el animal con la trompa bien elegante,tiene las patas gigantes ese animal es bien gigante",
+                         child: Text("Cual es el animal con la trompa bien elegante,tiene las patas gigantes ese animal es bien grande",
                                       style: TextStyle(fontSize: 20),
                                     )
                          ),
                           GestureDetector(
-                          onTap: () => widget.audio.play('audios/leon.mp3'),
+                          onTap: () => widget.audio.play('audios/adivinanza.mp3'),
                           child: Image.asset('assets/sonido.png',
                                  width  : 50,
                                  height : 50,

@@ -39,7 +39,7 @@ List<Animal> animalesList = [
    ),
    Animal(
    nombre      : 'Jirafa',
-   pathAudio   : 'undefined',
+   pathAudio   : 'audios/jirafa.mp3',
    image       : 'assets/animales/jirafa.png',
    selecionado : false,
    opcion      : false,
@@ -48,7 +48,7 @@ List<Animal> animalesList = [
    ),
    Animal(
    nombre      : 'Serpiente',
-   pathAudio   : 'undefined',
+   pathAudio   : 'audios/serpiente.mp3',
    image       : 'assets/animales/serpiente.png',
    selecionado : false,
    opcion      : false,

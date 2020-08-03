@@ -34,9 +34,9 @@ class ComesonidosBloc extends Bloc<ComeSonidosEvent, ComeSonidosState> {
 
   Stream<ComeSonidosState> _completeEjercicio(ComeSonidosState state) async* {
     if (state.progreso == 0)
-      yield state.copyWith(progreso: 0.1);
-    else if (state.progreso < 1) {
-      yield state.copyWith(progreso: (state.progreso + 0.1));
+      yield state.copyWith(progreso: 0.1111,currentpage: 1);
+    else if (state.progreso < 1 && state.currentpage < 9) {
+      yield state.copyWith(progreso: (state.progreso + 0.1111),currentpage: (state.currentpage + 1));
     }
   }
 }

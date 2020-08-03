@@ -6,7 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SegundoEjercicioZoologico extends StatefulWidget {
   final AudioCache audio;
-  SegundoEjercicioZoologico({this.audio});
+  final ZoologicoState state;
+  SegundoEjercicioZoologico({this.audio,this.state});
   @override
   _SegundoEjercicioZoologicoState createState() =>
       _SegundoEjercicioZoologicoState();
@@ -16,34 +17,31 @@ class _SegundoEjercicioZoologicoState extends State<SegundoEjercicioZoologico> {
   int orden = 0;
   int respuesta;
   @override
-  Widget build(BuildContext context) {
-      context.bloc<ZoologicoBloc>().add(
-        RandomListAnimalEvent(respuesta: 'Leon')
-      );
-    return BlocBuilder<ZoologicoBloc,ZoologicoState>(
-          builder:(context,state)=> Column(
-             children: <Widget>[
-                        Padding(
-                        padding : EdgeInsets.all(15),
-                        child   : Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: <Widget>[
-                                             Text('Como es el rugido del leon',style: TextStyle(fontSize: 20)),
-                                             GestureDetector(
-                                             onTap: () => widget.audio.play('audios/leon.mp3'),
-                                             child: Image.asset('assets/sonido.png',
-                                                    width  : 50,
-                                                    height : 50,
-                                             ),
-                                             )
-                                  ],
+  Widget build(BuildContext context) {   
+         return Column(
+                children: <Widget>[
+                          Padding(
+                          padding : EdgeInsets.all(15),
+                          child   : Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: <Widget>[
+                                               Text('Como es el rugido del leon',style: TextStyle(fontSize: 20)),
+                                               GestureDetector(
+                                               onTap: () => widget.audio.play('audios/rugido.mp3'),
+                                               child: Image.asset('assets/sonido.png',
+                                                      width  : 50,
+                                                      height : 50,
+                                               ),
+                                               )
+                                    ],
                         ),
                         ),
-                        _opciones(state.randomAnimales),
+                        _opciones(widget.state.randomAnimales),
                         _selecionar(),
-                        _solucion(state.respuestaCorrecta)
+                        _solucion(widget.state.respuestaCorrecta)
              ],
-      ),
+      
+          
     );
   }
 

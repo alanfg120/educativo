@@ -27,6 +27,10 @@ class ZoologicoBloc extends Bloc<ZoologicoEvent, ZoologicoState> {
     if (event is VoltearTarjetaEvent)       yield* _voltearTarjeta(event, state);
     if (event is VerificarTurnoEvent)       yield* _verificarTurno(event, state);
     if (event is TranformTarjetaTextoEvent) yield* _textoTarjeta(event, state);
+    if (event is CompleteEjercicioEvent)    yield* _completeEjercicio(event,state);
+    if (event is ChangePageEvent)           yield* _changePage(event,state);
+    if (event is VerificarEjercicioEvent)   yield* _verificarEjercicio(event,state);
+
   }
 
   Stream<ZoologicoState> _selectAnimal(
@@ -50,6 +54,7 @@ class ZoologicoBloc extends Bloc<ZoologicoEvent, ZoologicoState> {
 
   Stream<ZoologicoState> _randomListAnimal(
       RandomListAnimalEvent event, ZoologicoState state) async* {
+
     final randomFirsList = state.animales.map((e) => e).toList();
     randomFirsList..shuffle();
     final indexLeon =
@@ -94,11 +99,10 @@ class ZoologicoBloc extends Bloc<ZoologicoEvent, ZoologicoState> {
       VoltearTarjetaEvent event, ZoologicoState state) async* {
     turno++;
     if (event.tipo == 'imagen') {
-      
-      if (turno <= 1) {
+        if (turno <= 1) {
         indexTarjeta = event.index;
         nombreTarjeta = state.tarjetaAnimales[event.index].nombre;
-      }
+       }
 
       state.tarjetaAnimales[event.index] =
           state.tarjetaAnimales[event.index].copyWith(volteado: true);
@@ -188,4 +192,64 @@ class ZoologicoBloc extends Bloc<ZoologicoEvent, ZoologicoState> {
     yield state.copyWith(tarjetaTextoAnimales: state.tarjetaTextoAnimales, select: true);
     yield state.copyWith(select: false);
   }
+
+ Stream<ZoologicoState> _completeEjercicio(
+    CompleteEjercicioEvent event, ZoologicoState state) async* {
+       if (state.progreso == 0)
+      yield state.copyWith(progreso: 0.2);
+    else if (state.progreso < 1) {
+      yield state.copyWith(progreso: (state.progreso + 0.2));
+    }
+    }
+
+  Stream<ZoologicoState> _changePage(
+    ChangePageEvent event, ZoologicoState state) async*{
+       if(event.action == 'Anterior') 
+          yield state.copyWith(currentpage: (event.page -1));
+       if(event.action == 'Siguiente' && event.page < 4) 
+          yield state.copyWith(currentpage: (event.page + 1));
+     }
+
+   Stream<ZoologicoState> _verificarEjercicio(
+     VerificarEjercicioEvent event, ZoologicoState state)  async* {
+      
+      switch (event.page) {
+                case 0 :  int selecionados = 0;
+                          state.animales.forEach((animal) { 
+                             if(animal.selecionado)
+                               selecionados ++;
+                          });
+                          if(selecionados>0)
+                            add(CompleteEjercicioEvent());
+                          break;
+                case 1 :  if(state.respuestaCorrecta == 'correcto'){
+                            add(CompleteEjercicioEvent());
+                            yield state.copyWith(respuestaCorrecta: 'indefinido');
+                           }
+                          break;
+                case 2 :  if(state.respuestaCorrecta == 'correcto'){
+                            add(CompleteEjercicioEvent());
+                            yield state.copyWith(respuestaCorrecta: 'indefinido');
+                           }
+                          break;
+                case 3 :  int volteados = 0;
+                          state.tarjetaAnimales.forEach((animal) { 
+                            if(animal.volteado)
+                               volteados++;
+                          });
+                          if(volteados == 12)
+                          add(CompleteEjercicioEvent());
+                          break;
+                case 4 :  int volteados = 0;
+                          state.tarjetaTextoAnimales.forEach((animal) { 
+                            if(animal.volteado)
+                               volteados++;
+                          });
+                          if(volteados == 12)
+                          add(CompleteEjercicioEvent());
+                          break;
+        default:          break;
+      }
+
+     }
 }
