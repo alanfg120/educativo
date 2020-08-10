@@ -25,7 +25,7 @@ Map<String,List<EjercicioComesonidoClass>>  ejerciciosMap = {
                 EjercicioComesonidoClass(letra: 'M',accept: false),
                 EjercicioComesonidoClass(letra: 'A',accept: false),
                 EjercicioComesonidoClass(letra: 'M',accept: false),
-                EjercicioComesonidoClass(letra: 'A',accept: false),
+                EjercicioComesonidoClass(letra: 'Á',accept: false),
                ],
  'ejercicio5': [
                 EjercicioComesonidoClass(letra: 'P',accept: false),
@@ -39,24 +39,24 @@ Map<String,List<EjercicioComesonidoClass>>  ejerciciosMap = {
                 EjercicioComesonidoClass(letra: 'Amo',accept: false),
                 EjercicioComesonidoClass(letra: 'a',accept: false),
                 EjercicioComesonidoClass(letra: 'mi',accept: false),
-                EjercicioComesonidoClass(letra: 'mama',accept: false),
+                EjercicioComesonidoClass(letra: 'mamá.',accept: false),
                ],
  'ejercicio7': [
                 EjercicioComesonidoClass(letra: 'Mi',accept: false),
-                EjercicioComesonidoClass(letra: 'mama',accept: false),
+                EjercicioComesonidoClass(letra: 'mamá',accept: false),
                 EjercicioComesonidoClass(letra: 'me',accept: false),
                 EjercicioComesonidoClass(letra: 'ama',accept: false),
                ],
  'ejercicio8': [
                 EjercicioComesonidoClass(letra: 'Mi',accept: false),
                 EjercicioComesonidoClass(letra: 'sapo',accept: false),
-                EjercicioComesonidoClass(letra: 'salta',accept: false),
+                EjercicioComesonidoClass(letra: 'salta.',accept: false),
                ],
  'ejercicio9': [
-                EjercicioComesonidoClass(letra: 'Mimi',accept: false),
+                EjercicioComesonidoClass(letra: 'Emma',accept: false),
                 EjercicioComesonidoClass(letra: 'mima',accept: false),
                 EjercicioComesonidoClass(letra: 'a',accept: false),
-                EjercicioComesonidoClass(letra: 'Ema',accept: false),
+                EjercicioComesonidoClass(letra: 'Mimi.',accept: false),
                ],
  'ejercicio10': [
                 EjercicioComesonidoClass(letra: 'La',accept: false),

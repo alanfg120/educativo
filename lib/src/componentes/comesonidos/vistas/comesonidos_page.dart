@@ -20,19 +20,10 @@ class _ComeSonidosPageState extends State<ComeSonidosPage> {
 
   @override
   Widget build(BuildContext context) {
-    int _currentIndex = context.bloc<ComesonidosBloc>().state.currentpage;
+  
     return Scaffold(
-            body  : BlocConsumer<ComesonidosBloc,ComeSonidosState>(
-                listener: (context,state){
-                /*     if(state.progreso > 0 && state.progreso < 0.9999)
-                       _controller.nextPage(
-                                   duration : Duration(milliseconds: 800), 
-                                   curve    : Curves.linearToEaseOut
-                       ); */
-                    
-                },
-
-                builder:(context,state)
+            body  : BlocBuilder<ComesonidosBloc,ComeSonidosState>(
+                    builder:(context,state)
                         =>SafeArea(
                           child: Stack(
                                   children:<Widget>[ 
@@ -74,27 +65,27 @@ class _ComeSonidosPageState extends State<ComeSonidosPage> {
                                                   ejercicio : 'ejercicio5',
                                                   ),                    
                                                   EjercicioComeSonido(
-                                                  image     : 'assets/paloma.jpg',
+                                                  image     : 'assets/amo_mama.jpg',
                                                   data      :  state.ejercicios['ejercicio6'],
                                                   ejercicio : 'ejercicio6',
                                                   ),                    
                                                   EjercicioComeSonido(
-                                                  image     : 'assets/paloma.jpg',
+                                                  image     : 'assets/mama_me_ama.jpg',
                                                   data      :  state.ejercicios['ejercicio7'],
                                                   ejercicio : 'ejercicio7',
                                                   ),                    
                                                   EjercicioComeSonido(
-                                                  image     : 'assets/paloma.jpg',
+                                                  image     : 'assets/sapo_salta.png',
                                                   data      :  state.ejercicios['ejercicio8'],
                                                   ejercicio : 'ejercicio8',
                                                   ),                    
                                                   EjercicioComeSonido(
-                                                  image     : 'assets/paloma.jpg',
+                                                  image     : 'assets/ema_mima.jpg',
                                                   data      :  state.ejercicios['ejercicio9'],
                                                   ejercicio : 'ejercicio9',
                                                   ),                    
                                                   EjercicioComeSonido(
-                                                  image     : 'assets/paloma.jpg',
+                                                  image     : 'assets/paloma_limpia.jpg',
                                                   data      :  state.ejercicios['ejercicio10'],
                                                   ejercicio : 'ejercicio10',
                                                   ),                    

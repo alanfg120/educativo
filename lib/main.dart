@@ -1,4 +1,5 @@
 
+import 'package:educativo/src/componentes/colorincolorado/bloc/colorincolorado_bloc.dart';
 import 'package:educativo/src/componentes/comesonidos/bloc/comesonidos_bloc.dart';
 import 'package:educativo/src/componentes/home/bloc/home_bloc.dart';
 import 'package:educativo/src/componentes/home/vistas/home_page.dart';
@@ -57,6 +58,10 @@ class MyApp extends StatelessWidget {
                       BlocProvider<ZoologicoBloc>(
                       lazy: false,
                       create: (context) => ZoologicoBloc(),
+                      ),
+                      BlocProvider<ColorinColoradoBloc>(
+                      lazy: false,
+                      create: (context) => ColorinColoradoBloc(),
                       )
                      
 
@@ -72,6 +77,7 @@ class MyApp extends StatelessWidget {
                                  color      : colorPrimary,
                                  brightness : Brightness.dark,
                                  //iconTheme  : IconThemeData(color:Colors.teal), 
+                                 // ignore: deprecated_member_use
                                  textTheme  : TextTheme(title : TextStyle(
                                                                 color: Colors.white,
                                                                 fontSize: 25.0,

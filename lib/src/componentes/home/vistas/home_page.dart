@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:educativo/src/componentes/colorincolorado/bloc/colorincolorado_bloc.dart';
 import 'package:educativo/src/componentes/comesonidos/bloc/comesonidos_bloc.dart';
 import 'package:educativo/src/componentes/home/bloc/home_bloc.dart';
 import 'package:educativo/src/componentes/zoologico/bloc/zoologico_bloc.dart';
@@ -10,9 +11,9 @@ class HomePage extends StatefulWidget {
 
   static final style = TextStyle(
       fontSize: 35,
-      fontFamily: "FrederickatheGreat",
+      fontFamily: "Roboto",
       fontWeight: FontWeight.w300,
-      color: Colors.purple);
+      color: Colors.black);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -58,19 +59,19 @@ class _HomePageState extends State<HomePage> {
                     pages: <Container>[
                            _itemMenu(
                             bloqueado : state.bloqueoJuego[0],
-                            image     : 'assets/zoologico.jpg',
+                            image     : 'assets/comesilabas.png',
                             page      : 0,
                             titulo    : 'Mounstro Comesonido' 
                            ),
                            _itemMenu(
                             bloqueado : state.bloqueoJuego[1],
-                            image     : 'assets/comesonidos.jpg',
+                            image     : 'assets/zoologico.png',
                             page      : 1,
                             titulo    : 'Zoologico' 
                            ),
                            _itemMenu(
                             bloqueado : state.bloqueoJuego[2],
-                            image     : 'assets/sapo.png',
+                            image     : 'assets/colorin.png',
                             page      : 2,
                             titulo    : 'Colorin Colorodado' 
                            ),
@@ -214,7 +215,7 @@ Widget  _progress(int pagina) {
                    break;  
           case 1 : return BlocConsumer<ZoologicoBloc,ZoologicoState>(
                            listener: (context,state){
-                              if((state.progreso * 10).toInt() == 5)
+                              if((state.progreso * 5).toInt() == 5)
                                  context.bloc<HomeBloc>().add(
                                   DesbloquearJuegoEvent(index: (pagina+1))
                                  );
@@ -224,7 +225,16 @@ Widget  _progress(int pagina) {
                           );     
                    break;  
        
-          case 2 : return LinearProgressIndicator(value : 0);       
+          case 2 : return BlocConsumer<ColorinColoradoBloc,ColorinColoradoState>(
+                           listener: (context,state){
+                              if((state.progreso * 5).toInt() == 5)
+                                 context.bloc<HomeBloc>().add(
+                                  DesbloquearJuegoEvent(index: (pagina+1))
+                                 );
+                          },
+                          builder: (context,state)=>
+                                    _barProgress(state.progreso, state.numeroEjercicios)
+                          );        
                    break;  
           default: break;
    }

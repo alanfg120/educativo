@@ -7,7 +7,7 @@ class HomeState extends Equatable {
   HomeState({this.bloqueoJuego});
 
   factory HomeState.initial()=>
-          HomeState(bloqueoJuego: [false,false,true]);
+          HomeState(bloqueoJuego: [false,false,false]);
   
   HomeState copyWith({List<bool> bloqueoJuego})=>
             HomeState(

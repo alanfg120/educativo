@@ -33,13 +33,13 @@ class _PrimerEjercicioZoologicoState extends State<PrimerEjercicioZoologico> {
                 child   : Row(
                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                          children: <Widget>[
-                                    Text("Seleciona el animal que mas te gusta",style: TextStyle(fontSize: 18)),
+                                    Text("Seleciona el animal que mas te gusta",style: TextStyle(fontSize: 15)),
                                     GestureDetector(
                                     onTap: ()=>widget.audio.play('audios/animalFavorito.mp3'),
                                     child: Image.asset(
                                            'assets/sonido.png',
-                                            width  : 50,
-                                            height : 50,
+                                            width  : 45,
+                                            height : 45,
                                     ),
                                     )   
                          ],
@@ -75,8 +75,8 @@ class _PrimerEjercicioZoologicoState extends State<PrimerEjercicioZoologico> {
                                                   children: <Widget>[
                                                       Image.asset(
                                                       state.animales[i].image,
-                                                      width  : 80,
-                                                      height : 80,
+                                                      width  : 50,
+                                                      height : 50,
                                                       fit    : BoxFit.contain,
                                                       ),
                                                       Checkbox(

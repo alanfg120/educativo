@@ -16,26 +16,30 @@ class EjercicioComeSonido extends StatefulWidget {
 
 class _EjercicioComeSonidoState extends State<EjercicioComeSonido> {
 
-   bool isAccept = false;
-   bool ok = true;
+ 
    
   @override
   Widget build(BuildContext context) {
+    
+    double heigthCaja = MediaQuery.of(context).size.height *  0.4;
+    double heigthCaja1 = MediaQuery.of(context).size.height * 0.25;
+    double heigthCaja2 = MediaQuery.of(context).size.height * 0.2;
+    
     return  Container(
             width     : double.infinity,
             alignment : Alignment.center,
             child     : Column(
                         children: <Widget>[
                                   Container(
-                                  height : 240,
+                                  height : heigthCaja2,
                                   child  : Image.asset(widget.image,fit: BoxFit.cover),
                                   margin : EdgeInsets.only(bottom: 20),
                                   ),
                                   Container(
                                   width  : double.infinity,
-                                  height : 180,
+                                  height : heigthCaja1,
                                   child  : Wrap(
-                                           runAlignment : WrapAlignment.center ,
+                                           runAlignment : WrapAlignment.start ,
                                            alignment    : WrapAlignment.spaceAround,
                                            runSpacing   : widget.data.length >4 ? 10 : 0,
                                            children     : widget.data.asMap()
@@ -43,10 +47,11 @@ class _EjercicioComeSonidoState extends State<EjercicioComeSonido> {
                                   ),
                                  ),
                                  Container(
+                                 margin : EdgeInsets.only(top:10.0),
                                  width  : double.infinity,
-                                 height : 180,  
+                                 height : heigthCaja,  
                                  child  : Wrap(
-                                          runAlignment : WrapAlignment.center ,
+                                          runAlignment : WrapAlignment.start ,
                                           alignment    : WrapAlignment.spaceAround,
                                           runSpacing   : widget.data.length >3 ? 10 : 0,
                                           children     : widget.data.asMap()

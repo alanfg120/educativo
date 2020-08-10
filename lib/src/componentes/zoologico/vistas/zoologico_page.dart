@@ -52,7 +52,7 @@ class _ZoologicoPageState extends State<ZoologicoPage> {
                               Padding(
                               padding: EdgeInsets.only(top:40),
                               child  : AnimatedSwitcher(
-                                       duration: Duration(milliseconds: 600),
+                                       duration: Duration(milliseconds: 800),
                                        child: IndexedStack(
                                               key: ValueKey<int>(state.currentpage),
                                               index: state.currentpage,

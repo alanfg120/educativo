@@ -59,8 +59,8 @@ Widget _opciones(List<Animal> animales,int radioValue) {
                                                     children: <Widget>[
                                                         Image.asset(
                                                         animales[i].image,
-                                                        width  : 80,
-                                                        height : 80,
+                                                        width  : 60,
+                                                        height : 60,
                                                         fit    : BoxFit.contain,
                                                         ),
                                                         Radio(
